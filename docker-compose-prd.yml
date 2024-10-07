@@ -1,0 +1,19 @@
+services:
+  tribanco:
+    build:
+      context: ./tribanco
+      dockerfile: docker/Dockerfile.prd
+    container_name: tribanco
+    hostname: tribanco
+    restart: always
+    ports:
+      - 80:3000
+    volumes:
+      - ./tribanco:/app
+      - /app/node_modules
+    env_file:
+      - ./tribanco/src/env/.env.prd
+    networks:
+      - network
+networks:
+  network:

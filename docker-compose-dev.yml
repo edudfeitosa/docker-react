@@ -1,0 +1,15 @@
+services:
+  tribanco-dev:
+    build:
+      context: ./tribanco
+      dockerfile: docker/Dockerfile
+    container_name: tribanco-dev
+    hostname: tribanco-dev
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./tribanco:/app
+      - /app/node_modules
+    env_file:
+      - ./tribanco/src/env/.env.dev
